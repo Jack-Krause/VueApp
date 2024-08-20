@@ -6,6 +6,8 @@ const cors = require("cors")
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 
+const userRoutes = require('./routes/UserRoutes')
+
 const port = 3000
 
 app.get('/', (req: Request, res: Response) => {
@@ -15,6 +17,7 @@ app.get('/', (req: Request, res: Response) => {
 app.use(cors())
 app.use(bodyParser.json())
 
+app.use("/user", userRoutes)
 
 mongoose.connect('mongodb://127.0.0.1:27017/vuefitness')
 	.then(() => {
